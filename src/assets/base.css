@@ -1,0 +1,80 @@
+:root {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+
+  --color-bg: #0a0a0f;
+  --color-bg-elevated: rgba(255, 255, 255, 0.04);
+  --color-bg-hover: rgba(255, 255, 255, 0.07);
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(255, 255, 255, 0.14);
+
+  --color-text: rgba(255, 255, 255, 0.72);
+  --color-text-muted: rgba(255, 255, 255, 0.48);
+  --color-heading: #ffffff;
+
+  --color-accent: #42d392;
+  --color-accent-secondary: #647eff;
+  --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-secondary) 100%);
+  --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(100, 126, 255, 0.35), transparent);
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 60px rgba(66, 211, 146, 0.12);
+
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-bg: #f8f9fc;
+    --color-bg-elevated: rgba(255, 255, 255, 0.85);
+    --color-bg-hover: rgba(255, 255, 255, 1);
+    --color-border: rgba(15, 23, 42, 0.08);
+    --color-border-strong: rgba(15, 23, 42, 0.14);
+
+    --color-text: rgba(15, 23, 42, 0.72);
+    --color-text-muted: rgba(15, 23, 42, 0.48);
+    --color-heading: #0f172a;
+
+    --gradient-glow: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(100, 126, 255, 0.15), transparent);
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+    --shadow-md: 0 8px 32px rgba(15, 23, 42, 0.08);
+    --shadow-glow: 0 0 60px rgba(66, 211, 146, 0.08);
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
