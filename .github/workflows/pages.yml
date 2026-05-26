@@ -4,6 +4,19 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      assessment_api_url:
+        description: Railway API base URL (e.g. https://xxx.up.railway.app/api)
+        required: false
+        type: string
+      assessment_provider:
+        description: Assessment provider (api or heuristic)
+        required: false
+        default: api
+        type: choice
+        options:
+          - api
+          - heuristic
 
 permissions:
   contents: read
@@ -21,6 +34,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v4
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
@@ -35,8 +51,8 @@ jobs:
         env:
           GITHUB_ACTIONS: true
           GITHUB_REPOSITORY: ${{ github.repository }}
-          VITE_ASSESSMENT_PROVIDER: ${{ secrets.VITE_ASSESSMENT_PROVIDER || 'heuristic' }}
-          VITE_ASSESSMENT_API_URL: ${{ secrets.VITE_ASSESSMENT_API_URL || '' }}
+          VITE_ASSESSMENT_PROVIDER: ${{ inputs.assessment_provider || vars.VITE_ASSESSMENT_PROVIDER || secrets.VITE_ASSESSMENT_PROVIDER || 'api' }}
+          VITE_ASSESSMENT_API_URL: ${{ inputs.assessment_api_url || vars.VITE_ASSESSMENT_API_URL || secrets.VITE_ASSESSMENT_API_URL }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
